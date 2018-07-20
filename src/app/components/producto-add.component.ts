@@ -24,30 +24,26 @@ export class ProductoAddComponent{
     ){
         this.titulo = 'Crear un nuevo producto';
         this.producto = new Producto(0, '', '', 0, '');
-
     }
 
     ngOnInit(){
-        console.log('producto-add.component.ts cargado');
+        console.log('@Component: Producto-add');
     }
     onSubmit(){
         console.log(this.producto);
         if(this.filesToUpload && this.filesToUpload.length >= 1){
-        this._productoService.makeFileRequest(GLOBAL.url+'upload-file', [], this.filesToUpload).then((result)=>{
-                console.log(result);
-
-                this.resultUpload = result;
-                this.producto.Imagen = this.resultUpload.filename;
-                this.saveProducto();
-                
-        }, (error) =>{
-            console.log(error);
-        });
-    }else{
-        this.saveProducto();
-    }
-
-        
+            this._productoService.makeFileRequest(GLOBAL.url+'upload-file', [], this.filesToUpload).then((
+                result)=>{
+                    console.log(result);
+                    this.resultUpload = result;
+                    this.producto.Imagen = this.resultUpload.filename;
+                    this.saveProducto();
+                }, (error) =>{
+                    console.log(error);
+                });
+        } else{
+            this.saveProducto();
+        }
     }
 
     saveProducto(){
@@ -65,7 +61,6 @@ export class ProductoAddComponent{
             }
         );
     }
-
 
     fileChangeEvent(fileInput: any){
         this.filesToUpload = <Array<File>>fileInput.target.files;

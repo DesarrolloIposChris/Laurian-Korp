@@ -13,31 +13,26 @@ export class ProductosListComponent{
     public titulo: string;
     public productos: Producto[];
     public myjson: Producto[];
+    public confirmado;
     
-    
-
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
         private _productoService: ProductoService
     ){
         this.titulo = 'Listado de productos';
-
     }
+
     ngOnInit(){
-        console.log('Productos-list.component esta cargado');
-this.ListarProductos();
-      
+        console.log('@Component: Producto-list');
+        this.ListarProductos();
     }
 
     ListarProductos(){
-        
-        
         this._productoService.ListarProdcutos().subscribe(
             result => {
                 if(result != undefined){
                     this.productos = result;
-                    //console.log(this.productos);
                 }
             },
             error => {
@@ -45,8 +40,6 @@ this.ListarProductos();
             }
         );
     }
-
-    public confirmado;
 
     borrarConfirm(id){
         this.confirmado = id;
@@ -59,11 +52,11 @@ this.ListarProductos();
     ondeleteProducto(id){
         this._productoService.deleteProducto(id).subscribe(
             response => {
-                    if(response.code == 200){
-                        this.ListarProductos();
-                    }else{
-                        alert('Error al borrar el producto');
-                    }
+                if(response != undefined){
+                    this.ListarProductos();
+                }else{
+                    alert('Error al borrar el producto');
+                }
             },
             error =>{
                 console.log(<any>error);

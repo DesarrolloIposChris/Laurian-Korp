@@ -22,7 +22,7 @@ export class ProductoService{
     /*getProductos(){
         return this._http.get(this.url+'productos').pipe(map(res=> res.json()));
    }*/
-   ListarProdcutos(){
+   ListarProdcutos():Observable<Producto[]>{
        return this._http.get(this.localurl+'ListarProductos').pipe(map(res=> res.json()));
    }
 
@@ -30,8 +30,8 @@ export class ProductoService{
         return this._http.get(this.url+'producto/'+id).pipe(map(res=> res.json()));
     }*/
 
-    getProducto(Id){
-        return this._http.get(this.localurl+'ObtenerProductoId/'+Id).pipe(map(res=> res.json()));
+    getProducto(Id):Observable<Producto>{
+        return this._http.get(this.localurl + 'ObtenerProductoId/' + Id).pipe(map(res=> res.json()));
     }
 
    /* addProducto(producto: Producto){
@@ -69,11 +69,6 @@ export class ProductoService{
     }
 
     makeFileRequest(url: string, params: Array<string>, files: Array<File>){
-
-
-        
-
-
         return new Promise((resolve, reject)=>{
             var formData: any = new FormData();
             var xhr = new XMLHttpRequest();
@@ -93,7 +88,6 @@ export class ProductoService{
                     }
                 }
             };
-
             xhr.open("POST", url, true);
             xhr.send(formData);
         });

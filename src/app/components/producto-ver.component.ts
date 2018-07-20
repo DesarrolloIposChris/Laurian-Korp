@@ -20,8 +20,7 @@ export class ProductoDetailComponent{
     ){}
 
     ngOnInit(){
-        console.log("producto-ver.comopoent.ts cargado...");
-
+        console.log('@Component: Producto-ver');
         this.getProducto();
     }
 
