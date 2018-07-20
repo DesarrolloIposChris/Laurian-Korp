@@ -13,8 +13,8 @@ const appRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {path: 'productos', component: ProductosListComponent},
-    {path: 'crear-producto', component: ProductoAddComponent},
     {path: 'producto/:id', component: ProductoDetailComponent},
+    {path: 'crear-producto', component: ProductoAddComponent},
     {path: 'editar-producto/:id', component: ProductoEditComponent},
     {path: '**', component: ErrorComponent}
 ];
