@@ -10,7 +10,7 @@ export class HomeComponent {
     public titulo: string;
 
     constructor() {
-        this.titulo = 'Webapp de productos con angular 4';
+        this.titulo = 'Productos y mas..';
     }
 
     // tslint:disable-next-line:use-life-cycle-interface
